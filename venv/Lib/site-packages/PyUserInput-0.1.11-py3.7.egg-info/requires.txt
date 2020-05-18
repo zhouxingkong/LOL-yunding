@@ -1,0 +1,2 @@
+pyHook
+pywin32

@@ -1,0 +1,3 @@
+[console_scripts]
+pywinio = pywinio.__main__:main
+
