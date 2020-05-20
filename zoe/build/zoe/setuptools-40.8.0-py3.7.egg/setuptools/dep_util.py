@@ -1,6 +1,5 @@
 from distutils.dep_util import newer_group
 
-
 # yes, this is was almost entirely copy-pasted from
 # 'newer_pairwise()', this is just another convenience
 # function.

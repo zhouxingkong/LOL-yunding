@@ -16,6 +16,7 @@ See <http://github.com/ActiveState/appdirs> for details and usage.
 __version_info__ = (1, 4, 3)
 __version__ = '.'.join(map(str, __version_info__))
 
+
 import os
 import sys
 
@@ -26,7 +27,6 @@ if PY3:
 
 if sys.platform.startswith('java'):
     import platform
-
     os_name = platform.java_ver()[3][0]
     if os_name.startswith('Windows'):  # "Windows XP", "Windows 7", etc.
         system = 'win32'
@@ -39,6 +39,7 @@ if sys.platform.startswith('java'):
         system = 'linux2'
 else:
     system = sys.platform
+
 
 
 def user_data_dir(appname=None, appauthor=None, version=None, roaming=False):
@@ -529,7 +530,6 @@ def _get_win_folder_with_ctypes(csidl_name):
 
     return buf.value
 
-
 def _get_win_folder_with_jna(csidl_name):
     import array
     from com.sun import jna
@@ -556,11 +556,9 @@ def _get_win_folder_with_jna(csidl_name):
 
     return dir
 
-
 if system == "win32":
     try:
         import win32com.shell
-
         _get_win_folder = _get_win_folder_with_pywin32
     except ImportError:
         try:

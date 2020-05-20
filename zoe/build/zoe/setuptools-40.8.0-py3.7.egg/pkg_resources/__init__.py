@@ -59,10 +59,8 @@ from pkg_resources.extern.six.moves import urllib, map, filter
 
 # capture these to bypass sandboxing
 from os import utime
-
 try:
     from os import mkdir, rename, unlink
-
     WRITE_SUPPORT = True
 except ImportError:
     # no write support, probably under GAE
@@ -73,7 +71,6 @@ from os.path import isdir, split
 
 try:
     import importlib.machinery as importlib_machinery
-
     # access attribute to force import under delayed import mechanisms.
     importlib_machinery.__name__
 except ImportError:
@@ -82,13 +79,14 @@ except ImportError:
 from . import py31compat
 from pkg_resources.extern import appdirs
 from pkg_resources.extern import packaging
-
 __import__('pkg_resources.extern.packaging.version')
 __import__('pkg_resources.extern.packaging.specifiers')
 __import__('pkg_resources.extern.packaging.requirements')
 __import__('pkg_resources.extern.packaging.markers')
 
+
 __metaclass__ = type
+
 
 if (3, 0) < sys.version_info < (3, 4):
     raise RuntimeError("Python 3.4 or later is required")
@@ -1993,7 +1991,6 @@ def _by_version_descending(names):
     >>> _by_version_descending(names)
     ['Setuptools-1.2.3.post1.egg', 'Setuptools-1.2.3b1.egg']
     """
-
     def _by_version(name):
         """
         Parse each component of the filename
@@ -2062,10 +2059,8 @@ class NoDists:
     >>> list(NoDists()('anything'))
     []
     """
-
     def __bool__(self):
         return False
-
     if six.PY2:
         __nonzero__ = __bool__
 
@@ -2523,10 +2518,8 @@ def _version_from_file(lines):
     Given an iterable of lines from a Metadata file, return
     the value of the Version field, if present, or None otherwise.
     """
-
     def is_version_line(line):
         return line.lower().startswith('version:')
-
     version_lines = filter(is_version_line, lines)
     line = next(iter(version_lines), '')
     _, _, value = line.partition(':')
@@ -3233,7 +3226,6 @@ def _initialize_master_working_set():
     # match order
     list(map(working_set.add_entry, sys.path))
     globals().update(locals())
-
 
 class PkgResourcesDeprecationWarning(Warning):
     """

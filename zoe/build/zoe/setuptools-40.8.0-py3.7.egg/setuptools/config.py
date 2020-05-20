@@ -256,7 +256,6 @@ class ConfigHandler:
         :param key:
         :rtype: callable
         """
-
         def parser(value):
             exclude_directive = 'file:'
             if value.startswith(exclude_directive):
@@ -264,7 +263,6 @@ class ConfigHandler:
                     'Only strings are accepted for the {0} field, '
                     'files are not accepted'.format(key))
             return value
-
         return parser
 
     @classmethod
@@ -363,7 +361,6 @@ class ConfigHandler:
         :param parse_methods:
         :rtype: callable
         """
-
         def parse(value):
             parsed = value
 
@@ -433,7 +430,6 @@ class ConfigHandler:
         :param warning_class: class of warning exception to be raised
         :param func: function to be wrapped around
         """
-
         @wraps(func)
         def config_handler(*args, **kwargs):
             warnings.warn(msg, warning_class)

@@ -36,6 +36,7 @@ except AttributeError:
 
 is_available = ssl is not None and object not in (HTTPSHandler, HTTPSConnection)
 
+
 try:
     from ssl import CertificateError, match_hostname
 except ImportError:
@@ -47,8 +48,10 @@ except ImportError:
         match_hostname = None
 
 if not CertificateError:
+
     class CertificateError(ValueError):
         pass
+
 
 if not match_hostname:
 
@@ -103,7 +106,6 @@ if not match_hostname:
 
         pat = re.compile(r'\A' + r'\.'.join(pats) + r'\Z', re.IGNORECASE)
         return pat.match(hostname)
-
 
     def match_hostname(cert, hostname):
         """Verify that *cert* (in decoded format as returned by
@@ -213,7 +215,6 @@ def once(func):
         if not hasattr(func, 'always_returns'):
             func.always_returns = func(*args, **kwargs)
         return func.always_returns
-
     return wrapper
 
 

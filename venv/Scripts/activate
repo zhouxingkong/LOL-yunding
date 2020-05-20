@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\game\LOL\yunding\zoe\venv"
+VIRTUAL_ENV="D:\game\LOL\yunding\LOL-yunding\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

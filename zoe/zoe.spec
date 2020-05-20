@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['zoe.py'],
-             pathex=['D:\\game\\LOL\\yunding\\zoe\\zoe'],
+             pathex=['D:\\game\\LOL\\yunding\\LOL-yunding\\zoe'],
              binaries=[],
              datas=[],
              hiddenimports=[],

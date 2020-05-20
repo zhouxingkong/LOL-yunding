@@ -15,7 +15,6 @@ from setuptools.extern import six
 try:
     # Attempt to use Cython for building extensions, if available
     from Cython.Distutils.build_ext import build_ext as _build_ext
-
     # Additionally, assert that the compiler module will load
     # also. Ref #1229.
     __import__('Cython.Compiler.Main')
@@ -56,7 +55,6 @@ if sys.platform == "darwin":
 elif os.name != 'nt':
     try:
         import dl
-
         use_stubs = have_rtld = hasattr(dl, 'RTLD_NOW')
     except ImportError:
         pass
@@ -298,7 +296,6 @@ if use_stubs or os.name == 'nt':
 else:
     # Build static libraries everywhere else
     libtype = 'static'
-
 
     def link_shared_object(
             self, objects, output_libname, output_dir=None, libraries=None,

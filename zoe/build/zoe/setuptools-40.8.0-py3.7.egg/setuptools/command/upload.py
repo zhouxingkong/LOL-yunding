@@ -18,7 +18,6 @@ class upload(orig.upload):
     Override default upload behavior to obtain password
     in a variety of different ways.
     """
-
     def run(self):
         try:
             orig.upload.run(self)

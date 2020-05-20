@@ -8,6 +8,7 @@ flatten = itertools.chain.from_iterable
 
 
 class Installer:
+
     nspkg_ext = '-nspkg.pth'
 
     def install_namespaces(self):

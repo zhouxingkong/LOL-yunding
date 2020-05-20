@@ -43,7 +43,6 @@ __all__ = ['get_requires_for_build_sdist',
            '__legacy__',
            'SetupRequirementsError']
 
-
 class SetupRequirementsError(BaseException):
     def __init__(self, specifiers):
         self.specifiers = specifiers
@@ -196,7 +195,6 @@ class _BuildMetaLegacyBackend(_BuildMetaBackend):
     bridge between the old packaging mechanism and the new packaging mechanism,
     and will eventually be removed.
     """
-
     def run_setup(self, setup_script='setup.py'):
         # In order to maintain compatibility with scripts assuming that
         # the setup.py script is in a directory on the PYTHONPATH, inject
@@ -217,7 +215,6 @@ class _BuildMetaLegacyBackend(_BuildMetaBackend):
             # the original path so that the path manipulation does not persist
             # within the hook after run_setup is called.
             sys.path[:] = sys_path
-
 
 # The primary backend
 _BACKEND = _BuildMetaBackend()

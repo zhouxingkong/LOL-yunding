@@ -25,6 +25,7 @@ _open = open
 from distutils.errors import DistutilsError
 from pkg_resources import working_set
 
+
 __all__ = [
     "AbstractSandbox", "DirectorySandbox", "SandboxViolation", "run_setup",
 ]

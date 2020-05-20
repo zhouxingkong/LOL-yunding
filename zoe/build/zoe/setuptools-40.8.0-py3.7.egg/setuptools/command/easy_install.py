@@ -98,7 +98,6 @@ if six.PY2:
     def _to_bytes(s):
         return s
 
-
     def isascii(s):
         try:
             six.text_type(s, 'ascii')
@@ -110,13 +109,13 @@ else:
     def _to_bytes(s):
         return s.encode('utf8')
 
-
     def isascii(s):
         try:
             s.encode('ascii')
             return True
         except UnicodeError:
             return False
+
 
 _one_liner = lambda text: textwrap.dedent(text).strip().replace('\n', '; ')
 
@@ -2333,7 +2332,6 @@ def _patch_usage():
         yield
     finally:
         distutils.core.gen_usage = saved
-
 
 class EasyInstallDeprecationWarning(SetuptoolsDeprecationWarning):
     """Class for warning about deprecations in EasyInstall in SetupTools. Not ignored by default, unlike DeprecationWarning."""

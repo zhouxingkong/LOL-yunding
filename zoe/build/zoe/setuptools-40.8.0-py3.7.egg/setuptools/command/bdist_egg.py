@@ -22,12 +22,10 @@ try:
     # Python 2.7 or >=3.2
     from sysconfig import get_path, get_python_version
 
-
     def _get_purelib():
         return get_path("purelib")
 except ImportError:
     from distutils.sysconfig import get_python_lib, get_python_version
-
 
     def _get_purelib():
         return get_python_lib(False)
@@ -111,6 +109,7 @@ class bdist_egg(Command):
         self.set_undefined_options('bdist', ('dist_dir', 'dist_dir'))
 
         if self.egg_output is None:
+
             # Compute filename of the output egg
             basename = Distribution(
                 None, None, ei_cmd.egg_name, ei_cmd.egg_version,

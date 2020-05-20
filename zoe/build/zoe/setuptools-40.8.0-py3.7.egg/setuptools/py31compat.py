@@ -9,7 +9,6 @@ except ImportError:
     import shutil
     import tempfile
 
-
     class TemporaryDirectory:
         """
         Very simple temporary directory context manager.

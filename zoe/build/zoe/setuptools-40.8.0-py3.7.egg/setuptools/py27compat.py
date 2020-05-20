@@ -18,6 +18,7 @@ if six.PY2:
     def get_all_headers(message, key):
         return message.getheaders(key)
 
+
 linux_py2_ascii = (
         platform.system() == 'Linux' and
         six.PY2

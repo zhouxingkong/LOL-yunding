@@ -76,6 +76,7 @@ class BaseSpecifier(with_metaclass(abc.ABCMeta, object)):
 
 
 class _IndividualSpecifier(BaseSpecifier):
+
     _operators = {}
 
     def __init__(self, spec="", prereleases=None):
@@ -267,7 +268,6 @@ def _require_version_compare(fn):
         if not isinstance(prospective, Version):
             return False
         return fn(self, prospective, spec)
-
     return wrapped
 
 

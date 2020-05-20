@@ -18,6 +18,7 @@ from setuptools.extern.six import PY3
 
 __metaclass__ = type
 
+
 WHEEL_NAME = re.compile(
     r"""^(?P<project_name>.+?)-(?P<version>\d.*?)
     ((-(?P<build>\d.*?))?-(?P<py_version>.+?)-(?P<abi>.+?)-(?P<platform>.+?)
@@ -140,7 +141,6 @@ class Wheel:
         def raw_req(req):
             req.marker = None
             return str(req)
-
         install_requires = list(sorted(map(raw_req, dist.requires())))
         extras_require = {
             extra: sorted(

@@ -30,7 +30,6 @@ from .monkey import get_unpatched
 
 if platform.system() == 'Windows':
     from setuptools.extern.six.moves import winreg
-
     safe_env = os.environ
 else:
     """
@@ -38,13 +37,11 @@ else:
     on this platform.
     """
 
-
     class winreg:
         HKEY_USERS = None
         HKEY_CURRENT_USER = None
         HKEY_LOCAL_MACHINE = None
         HKEY_CLASSES_ROOT = None
-
 
     safe_env = dict()
 

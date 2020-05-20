@@ -131,6 +131,7 @@ def write_pkg_file(self, file):
         def write_field(key, value):
             file.write("%s: %s\n" % (key, value))
 
+
     write_field('Metadata-Version', str(version))
     write_field('Name', self.get_name())
     write_field('Version', self.get_version())

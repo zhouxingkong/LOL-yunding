@@ -138,7 +138,6 @@ class InfoCommon:
         if self.tag_date:
             version += time.strftime("-%Y%m%d")
         return version
-
     vtags = property(tags)
 
 
@@ -175,7 +174,6 @@ class egg_info(InfoCommon, Command):
     @tag_svn_revision.setter
     def tag_svn_revision(self, value):
         pass
-
     ####################################
 
     def save_version_info(self, filename):
