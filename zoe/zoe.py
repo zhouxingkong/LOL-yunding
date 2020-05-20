@@ -14,6 +14,11 @@ mouse = Controller()
 m = PyMouse()
 k = PyKeyboard()
 
+x1 = [290, 328, 306, 344, 320, 334, 401, 380, 390, 440]
+y1 = [755, 722, 691, 664, 633, 595, 663, 634, 595, 633]
+x2 = [963, 898, 1017, 964, 1092]
+y2 = [645, 563, 571, 492, 636]
+
 leftClickIcon = []
 for filename in os.listdir(r'pic/leftClick'):
     if filename.endswith('.jpg') or filename.endswith('.png'):
@@ -41,6 +46,9 @@ for filename in os.listdir(r'pic/dragEnd'):
     if filename.endswith('.jpg') or filename.endswith('.png'):
         dragEndIcon.append(cv2.imread('pic/dragEnd/' + filename))
 
+flags = []
+flags.append(cv2.imread('pic/flags/in_game_flag.png'))
+
 
 def leftClick(x, y):
     pyautogui.click(x, y, button='left')
@@ -65,6 +73,7 @@ print("推荐配置:游戏客户端1280x720; 屏幕1920x1080")
 print("-----------------------------------------")
 print("脚本已启动，请转到游戏界面")
 count = 0
+index = 0
 while True:
     pic = ImageGrab.grab()
     pic.save("target.jpg")
@@ -101,7 +110,17 @@ while True:
     #                 print("do drag",min_loc_start[0] + twidth_start // 2, min_loc_start[1] + theight_start // 2,min_loc_end[0] + twidth_end // 2, min_loc_end[1] + theight_end // 2)
     #                 break
 
+    # 自动上装备
     count += 1
+    if (count % 3 == 0):
+        theight, twidth = flags[0].shape[:2]
+        result = cv2.matchTemplate(target, flags[0], cv2.TM_SQDIFF_NORMED)  # 检测是否在游戏中
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+        # 确认在游戏中再拖拽装备
+        if min_val < 0.25:
+            drag(x1[index % len(x1)], y1[index % len(y1)], x2[index % len(x2)], y2[index % len(y2)])
+        index += 1
+
     if (count % 10 == 0):
         for i in range(len(leftClickDelayIcon)):
             theight, twidth = leftClickDelayIcon[i].shape[:2]
