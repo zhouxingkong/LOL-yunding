@@ -23,12 +23,28 @@
 
 ps: 脚本有时会出现误点击的情况，所以建议在LOL客户端和桌面背景之间不要在加入其它程序的窗口。
 
-## 拿牌策略
+## 扩展
 
-目前策略是只拿七个剑士
+此脚本支持用户自行功能扩展，在pic目录中有如下的文件夹
+
+文件夹|功能
+--|--
+leftClick|左键实时点击的图标
+rightClick|右键实时点击的图标
+leftClickDelay|左键延迟点击的图标
+dragStart|目前没用
+dragEnd|目前没用
+
+带对应路径放入.jpg或.png格式的图片即可完成对该图片的自动匹配点击。
 
 ## 脚本编译
 
+在github上下载源码包
+``` shell
+git clone https://github.com/zhouxingkong/LOL-yunding.git
+```
+
+使用pip安装依赖的库文件
 ``` shell
 pip install numpy
 pip install opencv-python
