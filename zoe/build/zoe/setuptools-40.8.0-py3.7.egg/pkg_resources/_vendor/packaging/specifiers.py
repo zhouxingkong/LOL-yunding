@@ -212,6 +212,7 @@ class _IndividualSpecifier(BaseSpecifier):
 
 
 class LegacySpecifier(_IndividualSpecifier):
+
     _regex_str = (
         r"""
         (?P<operator>(==|!=|<=|>=|<|>))

@@ -2750,7 +2750,7 @@ class Word(Token):
                                 (_escapeRegexRangeChars(self.initCharsOrig),
                                  _escapeRegexRangeChars(self.bodyCharsOrig),)
             if self.asKeyword:
-                self.reString = r"\b" + self.reString + r"\b"
+                self.reString = r"\b"+self.reString+r"\b"
             try:
                 self.re = re.compile( self.reString )
             except Exception:
@@ -4210,7 +4210,7 @@ class SkipTo(ParseElementEnhance):
         loc = tmploc
         skiptext = instring[startloc:loc]
         skipresult = ParseResults(skiptext)
-
+        
         if self.includeMatch:
             loc, mat = expr_parse(instring,loc,doActions,callPreParse=False)
             skipresult += mat
@@ -4298,7 +4298,6 @@ class Forward(ParseElementEnhance):
             ret = Forward()
             ret <<= self
             return ret
-
 
 class _ForwardNoRecurse(Forward):
     def __str__( self ):
@@ -4438,7 +4437,7 @@ class Dict(TokenConverter):
                 if len(dictvalue) != 1 or (isinstance(dictvalue, ParseResults) and dictvalue.haskeys()):
                     tokenlist[ikey] = _ParseResultsWithOffset(dictvalue, i)
                 else:
-                    tokenlist[ikey] = _ParseResultsWithOffset(dictvalue[0], i)
+                    tokenlist[ikey] = _ParseResultsWithOffset(dictvalue[0],i)
 
         if self.resultsName:
             return [ tokenlist ]
@@ -4466,7 +4465,7 @@ class Suppress(TokenConverter):
     (See also L{delimitedList}.)
     """
 
-    def postParse(self, instring, loc, tokenlist):
+    def postParse(self, instring, loc, tokenlist ):
         return []
 
     def suppress( self ):
@@ -4582,7 +4581,6 @@ def countedArray(expr, intExpr=None):
         n = t[0]
         arrayExpr << (n and Group(And([expr]*n)) or Group(empty))
         return []
-
     if intExpr is None:
         intExpr = Word(nums).setParseAction(lambda t:int(t[0]))
     else:
@@ -5242,7 +5240,7 @@ def infixNotation(baseExpr, opList, lpar=Suppress('('), rpar=Suppress(')')):
                 matchExpr = FollowedBy(opExpr.expr + thisExpr) + Group( opExpr + thisExpr )
             elif arity == 2:
                 if opExpr is not None:
-                    matchExpr = FollowedBy(lastExpr + opExpr + thisExpr) + Group(lastExpr + OneOrMore(opExpr + thisExpr))
+                    matchExpr = FollowedBy(lastExpr + opExpr + thisExpr) + Group( lastExpr + OneOrMore( opExpr + thisExpr ) )
                 else:
                     matchExpr = FollowedBy(lastExpr + thisExpr) + Group( lastExpr + OneOrMore( thisExpr ) )
             elif arity == 3:
@@ -5352,18 +5350,18 @@ def nestedExpr(opener="(", closer=")", content=None, ignoreExpr=quotedString.cop
                     content = (Combine(OneOrMore(~ignoreExpr +
                                                  ~Literal(opener) + ~Literal(closer) +
                                                  CharsNotIn(ParserElement.DEFAULT_WHITE_CHARS, exact=1))
-                                       ).setParseAction(lambda t: t[0].strip()))
+                                       ).setParseAction(lambda t:t[0].strip()))
                 else:
                     content = (Combine(OneOrMore(~Literal(opener) + ~Literal(closer) +
                                                  CharsNotIn(ParserElement.DEFAULT_WHITE_CHARS, exact=1))
-                                       ).setParseAction(lambda t: t[0].strip()))
+                                       ).setParseAction(lambda t:t[0].strip()))
         else:
             raise ValueError("opening and closing arguments must be strings if no content expression is given")
     ret = Forward()
     if ignoreExpr is not None:
         ret <<= Group(Suppress(opener) + ZeroOrMore(ignoreExpr | ret | content) + Suppress(closer))
     else:
-        ret <<= Group(Suppress(opener) + ZeroOrMore(ret | content) + Suppress(closer))
+        ret <<= Group(Suppress(opener) + ZeroOrMore( ret | content )  + Suppress(closer) )
     ret.setName('nested %s%s expression' % (opener,closer))
     return ret
 
@@ -5684,7 +5682,7 @@ class pyparsing_common:
     fraction = (signed_integer().setParseAction(convertToFloat) + '/' + signed_integer().setParseAction(
         convertToFloat)).setName("fraction")
     """fractional expression of an integer divided by an integer, returns a float"""
-    fraction.addParseAction(lambda t: t[0] / t[-1])
+    fraction.addParseAction(lambda t: t[0]/t[-1])
 
     mixed_integer = (fraction | signed_integer + Optional(Optional('-').suppress() + fraction)).setName("fraction or mixed integer-fraction")
     """mixed integer of the form 'integer - fraction', with optional leading integer, returns float"""

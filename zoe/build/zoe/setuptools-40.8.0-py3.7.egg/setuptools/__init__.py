@@ -121,7 +121,7 @@ class PEP420PackageFinder(PackageFinder):
 find_packages = PackageFinder.find
 
 if PY3:
-    find_namespace_packages = PEP420PackageFinder.find
+  find_namespace_packages = PEP420PackageFinder.find
 
 
 def _install_setup_requires(attrs):
@@ -143,6 +143,7 @@ def setup(**attrs):
     return distutils.core.setup(**attrs)
 
 setup.__doc__ = distutils.core.setup.__doc__
+
 
 _Command = monkey.get_unpatched(distutils.core.Command)
 
