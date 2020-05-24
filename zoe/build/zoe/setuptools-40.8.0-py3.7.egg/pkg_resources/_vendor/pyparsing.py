@@ -5679,8 +5679,7 @@ class pyparsing_common:
     signed_integer = Regex(r'[+-]?\d+').setName("signed integer").setParseAction(convertToInteger)
     """expression that parses an integer with optional leading sign, returns an int"""
 
-    fraction = (signed_integer().setParseAction(convertToFloat) + '/' + signed_integer().setParseAction(
-        convertToFloat)).setName("fraction")
+    fraction = (signed_integer().setParseAction(convertToFloat) + '/' + signed_integer().setParseAction(convertToFloat)).setName("fraction")
     """fractional expression of an integer divided by an integer, returns a float"""
     fraction.addParseAction(lambda t: t[0]/t[-1])
 

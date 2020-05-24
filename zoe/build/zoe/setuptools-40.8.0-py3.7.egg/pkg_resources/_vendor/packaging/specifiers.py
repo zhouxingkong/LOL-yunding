@@ -273,6 +273,7 @@ def _require_version_compare(fn):
 
 
 class Specifier(_IndividualSpecifier):
+
     _regex_str = (
         r"""
         (?P<operator>(~=|==|!=|<=|>=|<|>|===))
