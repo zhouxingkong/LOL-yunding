@@ -1,6 +1,6 @@
 ('D:\\game\\LOL\\yunding\\LOL-yunding\\zoe\\build\\zoe\\setuptools-40.8.0-py3.7.egg',
  None,
- {'EGG-INFO', '*.pyc', '*.py', '*.cp37-win32.pyd', '*.pyw', '*.pyd'},
+ {'*.pyw', '*.pyd', '*.pyc', '*.py', 'EGG-INFO', '*.cp37-win32.pyd'},
  'DATA',
  [('setuptools\\cli-32.exe',
    'D:\\game\\LOL\\yunding\\LOL-yunding\\zoe\\build\\zoe\\setuptools-40.8.0-py3.7.egg\\setuptools\\cli-32.exe',

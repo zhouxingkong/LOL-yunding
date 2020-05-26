@@ -87,6 +87,7 @@ flags.append(cv2.imread('pic/flags/in_game_flag.png'))
 flags.append(cv2.imread('pic/flags/in_game_flag2.png'))
 flags.append(cv2.imread('pic/flags/heroInfoFlag.png'))
 flags.append(cv2.imread('pic/flags/fighting_flag.png'))
+flags.append(cv2.imread('pic/flags/fighting_flag2.png'))
 
 
 # --------------------------------动作-------------------------------------
@@ -238,10 +239,12 @@ while True:
         # 查看英雄信息必须放到每个循环最后
         t = time.time()
         if t - lastJudgeHeroTime > 4:  # 4秒钟查看一次英雄
-            target2 = target[660 - Y_START:1080, :]
+            target2 = target[660 - Y_START:1080 - Y_START, :]
             result = cv2.matchTemplate(target2, flags[3], cv2.TM_SQDIFF_NORMED)
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-            if min_val < 0.25 and inPlaceHeroNum < len(isHeroInPlace):
+            result = cv2.matchTemplate(target2, flags[4], cv2.TM_SQDIFF_NORMED)
+            min_val_2, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+            if min_val < 0.2 or min_val_2 < 0.15 and inPlaceHeroNum < len(isHeroInPlace):
                 judgeHeroIndex = (judgeHeroIndex + 1) % len(heroPosX)
                 while judgeHeroIndex < len(isHeroInPlace) and judgeHeroIndex > placeNum:
                     judgeHeroIndex = (judgeHeroIndex + 1) % len(isHeroInPlace)
