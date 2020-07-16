@@ -180,7 +180,6 @@ while True:
                 if judgeHeroIndex < len(isHeroInPlace) and isHeroInPlace[judgeHeroIndex]:
                     isHeroInPlace[judgeHeroIndex] = False
                     inPlaceHeroNum -= 1
-                if needJudgeWatcher: drag(watcherPosX[judgeWatcherIndex], watcherPosY[judgeWatcherIndex], 940, 993)
             elif needJudgeHero and judgeHeroIndex < len(isHeroInPlace) and isHeroInPlace[
                 judgeHeroIndex]:  # 该位置的英雄已经标记就位
                 if judgeHeroIndex != hero:  # 标记错了，清除标记
@@ -190,7 +189,9 @@ while True:
                 if needJudgeHero and isPosReady[hero]:
                     drag(heroPosX[judgeHeroIndex], heroPosY[judgeHeroIndex], heroPosX[hero], heroPosY[hero])
                     isHeroInPlace[hero] = True
-                    inPlaceHeroNum+=1
+                    inPlaceHeroNum += 1
+            elif hero < 0 and needJudgeWatcher:
+                drag(watcherPosX[judgeWatcherIndex], watcherPosY[judgeWatcherIndex], 940, 993)
             needJudgeHero = False
             needJudgeWatcher = False
 
